@@ -1,0 +1,40 @@
+﻿<Window x:Class="FormForPractic.AddForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:FormForPractic"
+        mc:Ignorable="d"
+        Title="Добавить платёж" Height="300" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Категория" Height="25" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" Width="65"  />
+        <ComboBox Grid.Row="0" Grid.Column="1" Height="25" Width="290" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,20" x:Name="CBCategory"/>
+        <Label Grid.Row="1" Content="Назначение платежа" Height="25" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="125"  Margin="0,0,0,20"  />
+        <TextBox Grid.Row="1" Grid.Column="1" Height="25" Width="290" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,20" x:Name="TBPlat"/>
+        <Label Grid.Row="2" Content="Количество" Height="25" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20"  Width="75"  />
+        <xctk:IntegerUpDown x:Name="NumKol" Grid.Row="2" Grid.Column="1" Height="25" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,20" />
+        <Label Grid.Row="3" Content="Цена" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="45"  />
+        <Label Grid.Row="3" Grid.Column="1" Content="р." Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25"  />
+        <TextBox Grid.Row="3" Grid.Column="1" Height="25" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,20" x:Name="TBCost"/>
+        <Button Height="35" Width="100" Grid.Column="1" Grid.Row="4" Content="Добавить" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top" x:Name="AddBtn"/>
+        <Button Height="35" Width="100" Grid.Column="1" Grid.Row="4" Content="Отменить" HorizontalAlignment="Left" Margin="150,0,0,0" VerticalAlignment="Top" x:Name="CnlBtn" Click="CnlBtn_Click" />
+
+
+
+
+
+    </Grid>
+</Window>
