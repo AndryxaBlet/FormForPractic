@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace FormForPractic
 {
@@ -27,10 +28,10 @@ namespace FormForPractic
             InitializeComponent();
         }
 
-        
+        public string LOGIN = "";
         private void Button_Click_1(object sender, RoutedEventArgs e)
         { 
-            string connectionString= @"data source=REVISION-PC;initial catalog=practicir311;integrated security=True";
+            string connectionString= @"data source=1-510-cls-10;initial catalog=Practic1101;user id=sa;password=123";
           
           
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -39,15 +40,24 @@ namespace FormForPractic
                  SqlCommand command = new SqlCommand();
                 command.CommandText="select * from users where login = @log and password = @pass";
                 command.Connection = connection;
-                command.Parameters.AddWithValue("@pass", passb.Password.ToString());
+                command.Parameters.AddWithValue("@pass", hash(passb.Password.ToString()));
                 command.Parameters.AddWithValue("@log", login.Text.ToString());
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.HasRows)
                     {
-
-                        GridWindow frm = new GridWindow();
-                        frm.Show();
+                        LOGIN = login.Text.ToString();
+                        if (LOGIN != "admin")
+                        {
+                            GridWindow frm = new GridWindow(LOGIN);
+                            frm.Show();
+                        }
+                        else
+                        {
+                            GridWindowAdmin frm = new GridWindowAdmin();
+                            frm.Show();
+                        }
+ 
                         Close();
                     }
                     else
@@ -59,15 +69,24 @@ namespace FormForPractic
                         }
                     }
                 }
-            }
-
-          
-           
+            } 
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+           
             this.Close();
+        }
+        public string hash(string source)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] sourceBytes = Encoding.UTF8.GetBytes(source);
+                byte[] hashBytes = sha256Hash.ComputeHash(sourceBytes);
+                string hash = BitConverter.ToString(hashBytes).Replace("-", String.Empty);
+                return hash;
+            }
+            
         }
     }
 }

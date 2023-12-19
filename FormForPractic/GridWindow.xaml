@@ -25,13 +25,14 @@
        
 
 
-        <DataGrid  Background="LightGray" x:Name="DGridHouse" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Margin="10">
+        <DataGrid  Background="LightGray" x:Name="DGrid" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Margin="10">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Наименование платежа" Binding="{Binding ID}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Количество" Binding="{Binding ResidentialComplexID}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Цена" Binding="{Binding Street}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Сумма" Binding="{Binding Number}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Категория" Binding="{Binding BuildingCost}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер заказа" Binding="{Binding id}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Наименование продукта" Binding="{Binding product_name}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding count}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding sum}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Категория" Binding="{Binding category_name}" Width="*"></DataGridTextColumn>
              
             </DataGrid.Columns>
         </DataGrid>
